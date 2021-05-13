@@ -2,6 +2,7 @@ package com.sankuai.inf.leaf.server.service;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.sankuai.inf.leaf.IDGen;
+import com.sankuai.inf.leaf.api.SegmentService;
 import com.sankuai.inf.leaf.common.PropertyFactory;
 import com.sankuai.inf.leaf.common.Result;
 import com.sankuai.inf.leaf.common.ZeroIDGen;
@@ -17,14 +18,15 @@ import org.springframework.stereotype.Service;
 import java.sql.SQLException;
 import java.util.Properties;
 
-@Service("SegmentService")
-public class SegmentService {
+@Service
+@com.alibaba.dubbo.config.annotation.Service
+public class SegmentServiceImpl implements SegmentService{
     private Logger logger = LoggerFactory.getLogger(SegmentService.class);
 
     private IDGen idGen;
     private DruidDataSource dataSource;
 
-    public SegmentService() throws SQLException, InitException {
+    public SegmentServiceImpl() throws SQLException, InitException {
         Properties properties = PropertyFactory.getProperties();
         boolean flag = Boolean.parseBoolean(properties.getProperty(Constants.LEAF_SEGMENT_ENABLE, "true"));
         if (flag) {

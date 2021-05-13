@@ -48,6 +48,10 @@
             <artifactId>leaf-core</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.sankuai.inf.leaf</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
         </dependency>
@@ -66,6 +70,11 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.dubbo.springboot</groupId>
+            <artifactId>spring-boot-starter-dubbo</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
     <build>

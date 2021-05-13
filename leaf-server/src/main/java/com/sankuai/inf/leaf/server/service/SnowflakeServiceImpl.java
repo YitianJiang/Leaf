@@ -1,6 +1,7 @@
 package com.sankuai.inf.leaf.server.service;
 
 import com.sankuai.inf.leaf.IDGen;
+import com.sankuai.inf.leaf.api.SnowflakeService;
 import com.sankuai.inf.leaf.common.PropertyFactory;
 import com.sankuai.inf.leaf.common.Result;
 import com.sankuai.inf.leaf.common.ZeroIDGen;
@@ -13,13 +14,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.Properties;
 
-@Service("SnowflakeService")
-public class SnowflakeService {
-    private Logger logger = LoggerFactory.getLogger(SnowflakeService.class);
+@Service
+@com.alibaba.dubbo.config.annotation.Service
+public class SnowflakeServiceImpl implements SnowflakeService{
+    private Logger logger = LoggerFactory.getLogger(SnowflakeServiceImpl.class);
 
     private IDGen idGen;
 
-    public SnowflakeService() throws InitException {
+    public SnowflakeServiceImpl() throws InitException {
         Properties properties = PropertyFactory.getProperties();
         boolean flag = Boolean.parseBoolean(properties.getProperty(Constants.LEAF_SNOWFLAKE_ENABLE, "true"));
         if (flag) {
